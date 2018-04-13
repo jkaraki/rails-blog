@@ -1,0 +1,8 @@
+<h1>All Posts</h1>
+
+<%= link_to "Create a New Post", new_post_path, class: "new_post" %>
+<% @posts.each do |post| %>
+
+  <h2><%= link_to post.title, post_path(post), class: "post_title" %></h2>
+    <p><%= post.body %></p>
+  <% end %>
