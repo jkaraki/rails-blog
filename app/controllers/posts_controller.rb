@@ -41,5 +41,4 @@ class PostsController < ApplicationController
     flash.notice = "Your post titled '#{@post.title}' has been deleted!"
     redirect_to posts_path
   end
-
 end
