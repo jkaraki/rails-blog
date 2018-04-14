@@ -13,11 +13,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+
   end
 
   def create
     @post = Post.new(post_params)
     @post.save
+    
     flash.notice = "Your post titled '#{@post.title}' has been created!"
     redirect_to post_path(@post)
   end
