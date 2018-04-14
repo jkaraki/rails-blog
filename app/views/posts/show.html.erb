@@ -1,5 +1,10 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.body %></p>
+  <p>
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag) %>
+    <% end %>
+  </p>
 
 <h3>Comments (<%= @post.comments.size%>)</h3>
 <%= render partial: 'posts/comment', collection: @post.comments.reverse %>
