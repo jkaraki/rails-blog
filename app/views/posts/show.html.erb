@@ -1,4 +1,7 @@
 <h1><%= @post.title %></h1>
+<% if @post.image.exists? %>
+<p><%= image_tag @post.image.url(:medium) %></p>
+<% end %>
 <p><%= @post.body %></p>
   <p>
     <% @post.tags.each do |tag| %>
