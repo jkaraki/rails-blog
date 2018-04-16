@@ -2,6 +2,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :zero_users_or_authenticated, only: [:create]
+  #
+  before_action :require_login, except: [:new, :create]
+
+  def zero_users_or_authenticated
+    unless User.count == 0 || current_user
+      redirect_to root_path
+      return false
+    end
+  end
   # GET /users
   # GET /users.json
   def index

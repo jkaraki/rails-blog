@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'paperclip'
 
 gem 'sorcery', '~> 0.11.0'
+gem 'mongoid', '~> 7.0'
 
 gem 'oauth', '~> 0.5.4'
 

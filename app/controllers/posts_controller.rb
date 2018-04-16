@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   include PostsHelper
 
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
