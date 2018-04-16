@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
   def new
+
   end
 
   def create
@@ -13,6 +14,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:authors, notice: "Logged out")
+    redirect_to(:users, notice: "Logged out")
   end
 end
