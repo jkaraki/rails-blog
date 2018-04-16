@@ -1,5 +1,7 @@
 <div>
   <h4>Username: <%= comment.username %></h4>
-  <p class="comment"><%= comment.body%></p>
-  <p>Posted <%= distance_of_time_in_words(comment.post.created_at, comment.created_at) %> ago</p>
+  <p class="comment"><%= comment.body %></p>
+  <p>Posted <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</p>
 </div>
+
+<!-- -->

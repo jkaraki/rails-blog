@@ -13,7 +13,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-
   end
 
   def create
@@ -37,10 +36,24 @@ class PostsController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  #To delete post and associated image
   def destroy
+    puts '************************'
+    puts params.inspect
+    puts '************************'
     @post = Post.find(params[:id])
+    # @image = @post.image
+    # @image.destroy
     @post.destroy
     flash.notice = "Your post titled '#{@post.title}' has been deleted!"
     redirect_to posts_path
   end
+
+  def destroy_image
+    @post = Post.find(params[:id])
+    @image = @post.image
+    @image.destroy
+    redirect_to edit_post_path(@post)
+  end
+
 end
