@@ -1,9 +1,10 @@
 # created using the scaffold controller
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   before_action :zero_users_or_authenticated, only: [:create]
-  #
+
   before_action :require_login, except: [:new, :create]
 
   def zero_users_or_authenticated

@@ -14,15 +14,27 @@ class PostsController < ApplicationController
   end
 
   def new
+    puts '*********'
+    puts params.inspect
+    puts '*********'
     @post = Post.new
+    @post.save
   end
 
   def create
+    puts '*********'
+    puts params.inspect
+    puts '*********'
+    # @user = User.find(params[:id])
     @post = Post.new(post_params)
     @post.save
 
     flash.notice = "Your post titled '#{@post.title}' has been created!"
-    redirect_to post_path(@post)
+    redirect_to users_posts_path
+  end
+
+  def show
+    @posts = Post.all
   end
 
   def edit
