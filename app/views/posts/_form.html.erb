@@ -15,13 +15,6 @@
   </div>
 
   <div>
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-    <!-- hidden field tag? -->
-
-  </div>
-
-  <div>
     <% if @post.image.exists? %>
     <%= image_tag @post.image.url(:medium) %><br>
     <%= f.label :image_delete %><br>

@@ -25,8 +25,8 @@ class PostsController < ApplicationController
     puts params.inspect
     puts '*******************************'
     @post = Post.new(post_params)
+    @post.user_id = session[:user_id]
     @post.save
-
     flash.notice = "Your post titled '#{@post.title}' has been created!"
     redirect_to post_path(@post)
   end
