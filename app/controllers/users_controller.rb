@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    # @user = User.find_by(username: params[:username])
-    # @posts = @user.posts.reverse
+    @user = User.find(params[:id])
+    @posts = @user.posts.reverse
   end
 
   # GET /users/new
