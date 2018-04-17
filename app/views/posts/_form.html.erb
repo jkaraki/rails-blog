@@ -1,5 +1,6 @@
 <%= form_for(@post, html: {multipart: true}) do |f| %>
 
+<!-- url: user_path(current_user) -->
   <div>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -16,6 +17,7 @@
   <div>
     <%= f.label :user_id %>
     <%= f.text_field :user_id %>
+    <!-- hidden field tag? -->
 
   </div>
 

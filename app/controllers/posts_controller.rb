@@ -14,6 +14,9 @@ class PostsController < ApplicationController
   end
 
   def new
+    puts '*******************************'
+    puts params.inspect
+    puts '*******************************'
     @post = Post.new
   end
 

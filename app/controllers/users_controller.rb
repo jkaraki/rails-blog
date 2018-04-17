@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    puts '*************************'
+    puts params.inspect
+    puts '*************************'
     @user = User.find(params[:id])
     @posts = @user.posts.reverse
   end

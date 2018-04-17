@@ -4,6 +4,10 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    # puts '**************************'
+    # puts params.inspect
+    # puts '**************************'
+
     if login(params[:email], params[:password])
       redirect_back_or_to(posts_path, notice: 'Login successful')
     else
@@ -13,7 +17,10 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    logout
-    redirect_to(:users, notice: "Logged out")
+    puts '**************************'
+    puts params.inspect
+    puts '**************************'
+    reset_session
+    redirect_to(posts_path, notice: "Logged out")
   end
 end
