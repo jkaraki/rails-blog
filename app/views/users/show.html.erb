@@ -20,5 +20,8 @@
   <%= @user.password_confirmation %>
 </p>
 
+<h2><%= @user.username %>'s Posts</h2>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

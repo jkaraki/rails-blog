@@ -18,6 +18,9 @@ class PostsController < ApplicationController
   end
 
   def create
+    puts '*******************************'
+    puts params.inspect
+    puts '*******************************'
     @post = Post.new(post_params)
     @post.save
 

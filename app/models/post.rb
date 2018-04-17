@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   has_many :comments, :dependent => :destroy
   has_many :taggings, :dependent => :destroy
   has_many :tags, through: :taggings
+  belongs_to :user
   # has_attached_file :image, :dependent => :destroy
 
   # Using > after the image dimensions will only resize the image if it's larger than 300x300.

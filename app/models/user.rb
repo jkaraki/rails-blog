@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+  has_many :posts
   authenticates_with_sorcery!
 
   validates_confirmation_of :password, message: "passwords should match", if: :password
