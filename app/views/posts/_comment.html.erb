@@ -7,10 +7,10 @@
 </div>
 <div>
   <% if logged_in? && current_user.username == comment.username %>
-    <h3>
-      <%= link_to 'Delete Comment', [@post, comment], method: :delete, data: {confirm: "Are you sure you want to delete this comment?"} %>
+    <h4>
+      <em><%= link_to 'delete comment', [@post, comment], method: :delete, data: {confirm: "Are you sure you want to delete this comment?"} %><em>
 
-    </h3>
+    </h4>
   <% end %>
 </div>
 

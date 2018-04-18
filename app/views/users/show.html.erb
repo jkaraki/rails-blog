@@ -9,16 +9,14 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
 
-
-
-<h2><strong><%= @user.username %>'s posts</strong></h2>
-<hr>
+<div>
+  <h2 class="button-margin"><em><strong><%= @user.username %>'s posts</strong></em></h2>
+</div>
 
 <p><% @posts.each do |post| %></p>
 <h3><%= link_to post.title, post_path(post) %></h3>
-<p><%= post.body %></p>
-<% end %>
+<p class="body-indent"><%= post.body %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% end %>

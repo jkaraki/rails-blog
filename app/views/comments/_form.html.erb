@@ -1,17 +1,17 @@
-<h3>Comment On This Post:</h3>
+<h3>Join the conversation</h3>
+<hr>
 <%= form_for [ @post, @comment ] do |f| %>
-  <div>
-
-    <p><em>@<%= current_user.username %></p></em><br/>
-  </div>
+  <!-- <div>
+    <p>Comment as <em>@<%= current_user.username %></p></em>
+  </div> -->
   <div>
     <%= f.label :body, "Comment:" %><br/>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: 'form-control' %>
   </div>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :post_id, :value => @post.id %>
-  <div>
+  <div class="button-margin">
     <%= f.submit 'Submit' %>
   </div>
 <% end %>
