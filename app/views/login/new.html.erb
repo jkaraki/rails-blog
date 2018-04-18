@@ -9,4 +9,26 @@
   <%= submit_tag "Login" %>
   <% end %>
 
-  <%= link_to "Back" users_path %>
+
+
+  <% if flash[:notice] %>
+      <div class="modal flash-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">RailsBlog</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="flash"><%= flash.notice %></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>

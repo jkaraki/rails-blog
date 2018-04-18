@@ -9,7 +9,9 @@ class UserSessionsController < ApplicationController
     # puts '**************************'
     if login(params[:email], params[:password])
       redirect_back_or_to(posts_path, notice: 'Login successful')
+
     else
+      # This doesn't seem to be working.
       flash.now.alert = "Login failed."
       render action: :new
     end
@@ -20,6 +22,6 @@ class UserSessionsController < ApplicationController
     puts params.inspect
     puts '**************************'
     reset_session
-    redirect_to(posts_path, notice: "Logged out")
+    redirect_to(login_path, notice: "Logged out")
   end
 end
