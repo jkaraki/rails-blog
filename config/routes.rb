@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :user_sessions, only: [ :new, :create, :destroy ]
 
+  post '/users/:id/edit', to: 'user#show'
+
   get '/login', to: 'user_sessions#new'
   # 'user_sessions#new'
 
