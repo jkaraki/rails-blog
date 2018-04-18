@@ -37,13 +37,13 @@
   <body>
 
 <% if flash[:notice] %>
-<script>
-  $(document).ready(function() {
-  if($('.flash-modal').length) {
-    $('.flash-modal').modal('show');
-    }
-  })
-</script>
+  <script>
+    $(document).ready(function() {
+    if($('.flash-modal').length) {
+      $('.flash-modal').modal('show');
+      }
+    })
+  </script>
     <div class="modal flash-modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
