@@ -22,16 +22,23 @@ class CommentsController < ApplicationController
     end
   end
 
+  def show
+    @comments = Comment.all
+  end
+
+  # currently deletes all comments. Need it to only delete one comment. Need to isolate '@comment' instead
   def destroy
-    # puts '************************'
-    # puts params.inspect
-    # puts '************************'
-    # @comment = Post.find(params[:id])
-    # # @image = @post.image
-    # # @image.destroy
-    # @comment.destroy
-    # flash.notice = "Your post comment has been deleted!"
-    # redirect_to posts_path
+    puts '************************'
+    puts params.inspect
+    puts '************************'
+    @post = Post.find(params[:post_id])
+    @post.user_id = session[:user_id]
+    @comments = @post.comments
+    # @comment.post_id = @post.id
+
+    @comments.destroy
+    flash.notice = "Your post comment has been deleted!"
+    redirect_to posts_path
   end
 
   private
