@@ -76,10 +76,15 @@
         <hr>
         <h5>
           <% if logged_in? %>
-          <%= "Logged in as #{current_user.email}" %>
-          <%= link_to "(logout)", logout_path %>
-            <% else %>
-          <%= link_to "(login)", login_path %>
+            <%= "Logged in as #{current_user.email}" %>
+            <%= link_to "(logout)", logout_path %>
+          <% else %>
+            <%= link_to "(login)", login_path %>
+          <% end %>
+
+          <% if !logged_in? %>
+            <%= link_to "(create account)", new_user_path %>
+          <% else %>
           <% end %>
 
 

@@ -43,12 +43,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    # if login(params[:email], params[:password]) != login(params[:email], params[:password_confirmation])
+
+    #   redirect_back_or_to(login_path, notice: 'Passwords did not match. Try again.')
+    # end
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new }
+        format.html { redirect_to new_user_path, notice: @user.errors.full_messages[0] }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

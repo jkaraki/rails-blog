@@ -12,8 +12,7 @@ class UserSessionsController < ApplicationController
 
     else
       # This doesn't seem to be working.
-      flash.now.alert = "Login failed."
-      render action: :new
+      redirect_back_or_to(login_path, notice: 'Login failed')
     end
   end
 
@@ -23,5 +22,12 @@ class UserSessionsController < ApplicationController
     puts '**************************'
     reset_session
     redirect_to(posts_path, notice: "Logged out")
+  end
+
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end
