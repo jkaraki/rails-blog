@@ -32,11 +32,12 @@ class CommentsController < ApplicationController
     puts params.inspect
     puts '************************'
     @post = Post.find(params[:post_id])
-    @post.user_id = session[:user_id]
-    @comments = @post.comments
+    # @post.user_id = session[:user_id]
+    # @comments = @post.comments
+    @comment = Comment.find(params[:id])
     # @comment.post_id = @post.id
 
-    @comments.destroy
+    @comment.destroy
     flash.notice = "Your post comment has been deleted!"
     redirect_to posts_path
   end
@@ -44,6 +45,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:username, :body, :created_at, :post_id, :user_id)
+    params.require(:comment).permit(:username, :body, :created_at, :post_id, :user_id, :id)
   end
 end
