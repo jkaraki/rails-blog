@@ -1,13 +1,12 @@
 class UserSessionsController < ApplicationController
   def new
-
+    @user = User.new
   end
 
   def create
     # puts '**************************'
     # puts params.inspect
     # puts '**************************'
-
     if login(params[:email], params[:password])
       redirect_back_or_to(posts_path, notice: 'Login successful')
     else

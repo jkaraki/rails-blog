@@ -1,10 +1,10 @@
 # created using the scaffold controller
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  before_action :zero_users_or_authenticated, only: [:create]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
   #
-  before_action :require_login, except: [:new, :create]
+  # before_action :zero_users_or_authenticated, only: [:create]
+  #
+  # before_action :require_login, except: [:new, :create]
 
   def zero_users_or_authenticated
     unless User.count == 0 || current_user
@@ -85,6 +85,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end
