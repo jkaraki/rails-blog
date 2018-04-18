@@ -22,6 +22,6 @@ class UserSessionsController < ApplicationController
     puts params.inspect
     puts '**************************'
     reset_session
-    redirect_to(login_path, notice: "Logged out")
+    redirect_to(posts_path, notice: "Logged out")
   end
 end
