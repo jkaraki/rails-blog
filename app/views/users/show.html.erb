@@ -10,19 +10,13 @@
   <%= @user.email %>
 </p>
 
-<!-- <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
 
-<p>
-  <strong>Password confirmation:</strong>
-  <%= @user.password_confirmation %>
-</p> -->
 
-<h2><%= @user.username %>'s Posts</h2>
+<h2><strong><%= @user.username %>'s posts</strong></h2>
+<hr>
+
 <p><% @posts.each do |post| %></p>
-<h3><%= post.title %></h3>
+<h3><%= link_to post.title, post_path(post) %></h3>
 <p><%= post.body %></p>
 <% end %>
 
