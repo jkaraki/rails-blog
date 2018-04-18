@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2018_04_16_200016) do
     t.string "email", null: false
     t.string "crypted_password", null: false
     t.string "salt", null: false
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
