@@ -1,3 +1,4 @@
+<!-- Displays all tags and let's user click tag to see associated posts. -->
 <h1>All Tags</h1>
   <p><% @tags.each do |tag| %></p>
   <p><%= link_to tag.name, tag_path(tag) %></p>

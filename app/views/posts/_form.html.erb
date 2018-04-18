@@ -1,6 +1,6 @@
+<!-- Form to create a new post -->
 <%= form_for(@post, html: {multipart: true}, :class => 'form-group') do |f| %>
 
-<!-- url: user_path(current_user) -->
   <div>
     <%= f.label :title %><br>
     <%= f.text_field :title, class: 'form-control' %>

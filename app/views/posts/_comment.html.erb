@@ -1,9 +1,10 @@
+<!-- Display's comments underneath post and amount of time since comment was made -->
 <div>
   <h4>Username: <%= comment.username %></h4>
   <p class="comment"><%= comment.body %></p>
   <p>Posted <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</p>
 
-  <!-- option to delete comment -->
+  <!-- option to delete comment with an alert to make sure! -->
 </div>
 <div>
   <% if logged_in? && current_user.username == comment.username %>

@@ -1,3 +1,4 @@
+<!-- Page that shows post at post/:id. Gives option to comment as currently logged in user -->
 <h1><%= @post.title %></h1>
 <% if @post.image.exists? %>
 <p><%= image_tag @post.image.url(:medium) %></p>
@@ -9,6 +10,7 @@
     <% end %>
   </p>
 
+  <!-- If logged in, you can comment! -->
   <% if logged_in? %>
     <p>Comments (<%= @post.comments.size %>)</p>
     <%= render partial: 'posts/comment', collection: @post.comments.reverse %>
