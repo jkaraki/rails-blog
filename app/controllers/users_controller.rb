@@ -3,8 +3,9 @@ class UsersController < ApplicationController
   # before_action :set_user, only: [:show, :edit, :update, :destroy]
   #
   # before_action :zero_users_or_authenticated, only: [:create]
-  #
-  # before_action :require_login, except: [:new, :create]
+
+  # The below keeps the user from going to /users page. Will automatically redirect to root
+  before_action :require_login, except: [:new, :create]
 
   def zero_users_or_authenticated
     unless User.count == 0 || current_user
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
       return false
     end
   end
+
   # GET /users
   # GET /users.json
   def index
@@ -42,12 +44,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    # if login(params[:email], params[:password]) != login(params[:email], params[:password_confirmation])
-
-    #   redirect_back_or_to(login_path, notice: 'Passwords did not match. Try again.')
-    # end
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }

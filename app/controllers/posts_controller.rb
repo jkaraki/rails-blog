@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
   include PostsHelper
 
+  # redirects to root if not logged in when going to posts/new.
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+    # Reverses posts so they show from newest (top) to oldest (bottom)
     @posts = Post.all.reverse
   end
 
@@ -14,16 +16,16 @@ class PostsController < ApplicationController
   end
 
   def new
-    puts '*******************************'
-    puts params.inspect
-    puts '*******************************'
+    # puts '*******************************'
+    # puts params.inspect
+    # puts '*******************************'
     @post = Post.new
   end
 
   def create
-    puts '*******************************'
-    puts params.inspect
-    puts '*******************************'
+    # puts '*******************************'
+    # puts params.inspect
+    # puts '*******************************'
     @post = Post.new(post_params)
     @post.user_id = session[:user_id]
     @post.save
@@ -46,9 +48,9 @@ class PostsController < ApplicationController
 
   #To delete post and associated image
   def destroy
-    puts '************************'
-    puts params.inspect
-    puts '************************'
+    # puts '************************'
+    # puts params.inspect
+    # puts '************************'
     @post = Post.find(params[:id])
     # @image = @post.image
     # @image.destroy
@@ -63,5 +65,4 @@ class PostsController < ApplicationController
     @image.destroy
     redirect_to edit_post_path(@post)
   end
-
 end

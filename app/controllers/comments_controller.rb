@@ -1,16 +1,13 @@
 class CommentsController < ApplicationController
 
-  # before_action :require_login
+  # Not using => before_action :require_login
 
+  # When Comment is created, notice is displayed
   def create
-    puts '***************************'
-    puts params.inspect
-    puts '***************************'
-    # @user = User.find(params[:id])
-    # @username = @user.username
+    # puts '***************************'
+    # puts params.inspect
+    # puts '***************************'
     @comment = Comment.new(comment_params)
-    # @comment = Comment.create(comment_params)
-    # @post = Post.find(params[:id])
     @comment.post_id = params[:post_id]
     @comment.username = current_user.username
     if @comment.save
@@ -26,17 +23,13 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
-  # currently deletes all comments. Need it to only delete one comment. Need to isolate '@comment' instead
+  # Allows logged in user to delete their own comments
   def destroy
-    puts '************************'
-    puts params.inspect
-    puts '************************'
+    # puts '************************'
+    # puts params.inspect
+    # puts '************************'
     @post = Post.find(params[:post_id])
-    # @post.user_id = session[:user_id]
-    # @comments = @post.comments
     @comment = Comment.find(params[:id])
-    # @comment.post_id = @post.id
-
     @comment.destroy
     flash.notice = "Your post comment has been deleted!"
     redirect_to posts_path

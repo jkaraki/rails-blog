@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
 
     else
       # This doesn't seem to be working.
-      redirect_back_or_to(login_path, notice: 'Login failed')
+      redirect_back_or_to(login_path, notice: 'There was a problem logging you in')
     end
   end
 

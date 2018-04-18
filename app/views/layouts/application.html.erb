@@ -4,49 +4,53 @@
     <title>RailsBlog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- Links to my bootstrap css, js and jquery -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.0/cosmo/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<!-- navbar created using Bootstrap classes -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <%=link_to("RailsBlog", posts_path, class: "navbar-brand") %>
+      <%=link_to("RailsBlog", posts_path, class: "navbar-brand") %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <% if current_user %>
+          <%=link_to("Users", users_path, class: "nav-item nav-link") %>
 
-    <div class="navbar-nav">
-      <% if current_user %>
-      <%=link_to("Users", users_path, class: "nav-item nav-link") %>
-
-      <%=link_to("Profile", user_path(current_user), class: "nav-item nav-link") %>
-      <%=link_to("New Post", new_post_path, class: "nav-item nav-link") %>
-      <% end %>
-    </div>
-  </div>
-</nav>
+          <%=link_to("Profile", user_path(current_user), class: "nav-item nav-link") %>
+          <%=link_to("New Post", new_post_path, class: "nav-item nav-link") %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
   </header>
 
-
   <body>
+    <!-- jQuery/JS to show modal on page if it exists after login, logout, creating new posts and comments. It worked better here than in the main.js file for some reason. -->
+    <% if flash[:notice] %>
+      <script>
+        $(document).ready(function() {
+        if($('.flash-modal').length) {
+          $('.flash-modal').modal('show');
+          }
+        })
+      </script>
 
-<% if flash[:notice] %>
-  <script>
-    $(document).ready(function() {
-    if($('.flash-modal').length) {
-      $('.flash-modal').modal('show');
-      }
-    })
-  </script>
+<!-- The Bootstrap modal to display Ruby flash notices -->
     <div class="modal flash-modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -65,30 +69,31 @@
         </div>
       </div>
     </div>
-
   <% end %>
 
-
+<!-- .container1 is the basic page width and margin for all pages -->
     <div id="container1">
+      <!-- There are currently no stylings for .content1 -->
       <div id="content1">
     <%= yield %>
 
-        <hr>
-        <h5>
-          <% if logged_in? %>
-            <%= "Logged in as #{current_user.email}" %>
-            <%= link_to "(logout)", logout_path %>
-          <% else %>
-            <%= link_to "(login)", login_path %>
-          <% end %>
+<!-- Login, logout, create new user footer -->
+        <footer class="blockquote-footer">
+          <h5>
+            <% if logged_in? %>
+              <%= "Logged in as #{current_user.email}" %>
+              <%= link_to "(logout)", logout_path %>
+            <% else %>
+              <%= link_to "(login)", login_path %>
+            <% end %>
 
-          <% if !logged_in? %>
-            <%= link_to "(create account)", new_user_path %>
-          <% else %>
-          <% end %>
+            <% if !logged_in? %>
+              <%= link_to "(create account)", new_user_path %>
+            <% else %>
+            <% end %>
+          </h5>
+        </footer>
 
-
-        </h5>
       </div>
     </div>
   </body>
