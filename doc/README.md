@@ -12,7 +12,6 @@
   <p>
     The relationships between them are:
   </p>
-
     <ul>
       <li>One to Many between Users and Posts</li>
       <li>One to many between Users and Comments</li>
@@ -27,5 +26,5 @@
       <li>paperclip - to attach photos</li>
       <li>sqlite3 and activerecord - database management and ORM</li>
       <li>pry-rails and pry - to make it easier on the eyes in the console</li>
-      <li>sorcery - password encryption using salt</li>
+      <li>sorcery - password encryption using bcrypt</li>
     </ul>
