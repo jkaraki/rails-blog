@@ -76,12 +76,12 @@ class UsersController < ApplicationController
   # This will delete the user.
     @user = User.find(params[:id])
   # The below deletes the user's posts when the user is deleted.
-    @posts = Post.all
-    @posts.each do |post|
-      if post.user_id == @user.id
-  	  post.delete
-    end
-  end
+  #   @posts = Post.all
+  #   @posts.each do |post|
+  #     if post.user_id == @user.id
+  # 	  post.delete
+  #   end
+  # end
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
