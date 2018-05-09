@@ -1,5 +1,7 @@
 # README
 
+![](rails-blog.gif)
+
 <h1>Rails Blog</h1>
   <p>
     This Rails Blog has four tables:
